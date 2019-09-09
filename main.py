@@ -34,9 +34,9 @@ class Game:
             self.draw()
 
     def update(self):
-        # Game Loop - Update
+        # Game Loop
         self.all_sprites.update()
-        # check if player hits a platform - only if falling
+        # check if player touches platform
         if self.player.vel.y > 0:
             hits = pg.sprite.spritecollide(self.player, self.platforms, False)
             if hits:
@@ -50,7 +50,7 @@ class Game:
                 if plat.rect.top >= HEIGHT:
                     plat.kill()
 
-        # spawn new platforms to keep same average number
+         # spawn new platforms
         while len(self.platforms) < 6:
             width = random.randrange(50, 100)
             p = Platform(random.randrange(0, WIDTH - width),
@@ -59,7 +59,19 @@ class Game:
             self.platforms.add(p)
             self.all_sprites.add(p)
 
-g = Game()
+    def events(self):
+        for event in pg.event.get():
+            # check if button to close window is clicked
+            if event.type == pg.QUIT:
+                if self.playing:
+                    self.playing = False
+                self.running = False
+            # check for spacekey so player can jump
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_SPACE:
+                    self.player.jump()
+
+    g = Game()
 while g.running:
     g.new()
     
