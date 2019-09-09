@@ -59,6 +59,23 @@ class Game:
             self.platforms.add(p)
             self.all_sprites.add(p)
 
+    def events(self):
+        for event in pg.event.get():
+            # check if button to close window is clicked
+            if event.type == pg.QUIT:
+                if self.playing:
+                    self.playing = False
+                self.running = False
+            # check for spacekey so player can jump
+            if event.type == pg.KEYDOWN:
+                if event.key == pg.K_SPACE:
+                    self.player.jump()
+
+    def draw(self): 
+        self.screen.fill(LIGHTBLUE)
+        self.all_sprites.draw(self.screen)
+        pg.display.flip()
+
 g = Game()
 while g.running:
     g.new()
