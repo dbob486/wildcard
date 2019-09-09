@@ -1,7 +1,8 @@
 # wildcard
 
 To be able to play the game you have to download python.
-Then open the console/terminal and type                                    pip3 import pygame
+Then open the console/terminal and type                     
+pip3 import pygame
 
 Then open the IDLE console and open the file main.py which should be inside the directory of where you cloned it.
 
