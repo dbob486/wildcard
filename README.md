@@ -1,5 +1,5 @@
 
-# wildcard
+# WILDCARD
 
 To be able to play the game you have to download python.
 Then open the console/terminal and type 
